@@ -37,7 +37,7 @@ describe('before_each after_each egg test', function()
     end)
   end)
 
-it('3', function()
+  it('3', function()
     assert.equal(egg,'SbB1AabB2Aab')
     egg = egg..'3'
   end)

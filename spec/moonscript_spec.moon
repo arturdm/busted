@@ -4,4 +4,3 @@ describe "moonscript tests", ->
 
   it "fails", ->
     assert.error(-> assert.are.equal false, true)
-
