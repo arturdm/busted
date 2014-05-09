@@ -9,7 +9,7 @@ before_install:
   - bash .travis_setup.sh
 
 install:
-  - sudo luarocks make
+  - sudo luarocks make --server=http://rocks.moonscript.org
   - sudo apt-get update -qq
   - sudo apt-get install -qq libev-dev
   - sudo luarocks install lua-ev scm --server=http://luarocks.org/repositories/rocks-scm/
