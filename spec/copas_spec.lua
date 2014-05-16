@@ -1,12 +1,12 @@
-if not pcall(require, "copas") then
-  describe("Testing copas loop", function()
-    pending("The 'copas' loop was not tested because 'copas' isn't installed")
+if not pcall(require, 'copas') then
+  describe('Testing copas loop', function()
+    pending('The `copas` loop was not tested because `copas` is not installed')
   end)
 else
-  pending("Pending because copas is not supported yet", function()
+  pending('Pending because copas is not supported yet', function()
     -- temporarily adjust path to find the test file in the spec directory
     local old_path = package.path
-    package.path = "./spec/?.lua;"..old_path
+    package.path = './spec/?.lua;'..old_path
     local generic_async = require'generic_async_test'
     package.path = old_path
 

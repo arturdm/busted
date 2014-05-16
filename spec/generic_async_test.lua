@@ -67,10 +67,10 @@ local setup_async_tests = function(yield,loopname,create_timer)
             greet = function()
             end
           }
-          spy.on(thing, "greet")
-          thing.greet("Hi!")
+          spy.on(thing, 'greet')
+          thing.greet('Hi!')
           assert.spy(thing.greet).was.called()
-          assert.spy(thing.greet).was.called_with("Hi!")
+          assert.spy(thing.greet).was.called_with('Hi!')
         end)
 
       it(
@@ -80,14 +80,14 @@ local setup_async_tests = function(yield,loopname,create_timer)
             greet = function()
             end
           }
-          spy.on(thing, "greet")
+          spy.on(thing, 'greet')
           yield(async(
               function()
                 assert.spy(thing.greet).was.called()
-                assert.spy(thing.greet).was.called_with("Hi!")
+                assert.spy(thing.greet).was.called_with('Hi!')
                 done()
             end))
-          thing.greet("Hi!")
+          thing.greet('Hi!')
         end)
 
       describe(
@@ -260,7 +260,7 @@ local describe_statuses = function(statuses,print_statuses)
         end)
 
       it(
-        'provides "err" for failed tests',
+        'provides 'err' for failed tests',
         function()
           for i,status in ipairs(statuses) do
             if status.type == 'failure' then
@@ -271,7 +271,7 @@ local describe_statuses = function(statuses,print_statuses)
         end)
 
       it(
-        'provides "traceback" for failed tests',
+        'provides 'traceback' for failed tests',
         function()
           for i,status in ipairs(statuses) do
             if status.type == 'failure' then

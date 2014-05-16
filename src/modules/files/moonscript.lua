@@ -19,7 +19,7 @@ local rewrite_traceback = function(err, trace)
 
   local rewrite_one = function(line)
     if line == nil then
-      return ""
+      return ''
     end
 
     local fname, lineno = line:match('[^"]+"([^:]+)".:(%d+):')
@@ -33,19 +33,19 @@ local rewrite_traceback = function(err, trace)
     return line
   end
 
-  for line in trace:gmatch("[^\r\n]+") do
+  for line in trace:gmatch('[^\r\n]+') do
     j = j + 1
     lines[j] = rewrite_one(line)
   end
 
-  return rewrite_one(err), table.concat(lines, trace:match("[\r\n]+"))
+  return rewrite_one(err), table.concat(lines, trace:match('[\r\n]+'))
 end
 
 local ret = {}
 
 ret.match = function(busted, filename)
-  local path, name, ext = filename:match("(.-)([^\\/\\\\]-%.?([^%.\\/]*))$")
-  if ext == "moon" then
+  local path, name, ext = filename:match('(.-)([^\\/\\\\]-%.?([^%.\\/]*))$')
+  if ext == 'moon' then
     return true
   end
   return false
@@ -59,12 +59,12 @@ ret.load = function(busted, filename)
     file, err = moonscript.loadfile(filename)
 
     if not file then
-      busted.publish({ "error", 'file' }, filename, nil, nil, err)
+      busted.publish({ 'error', 'file' }, filename, nil, nil, err)
     end
   end)
 
   if not success then
-    busted.publish({ "error", 'file' }, filename, nil, nil, err)
+    busted.publish({ 'error', 'file' }, filename, nil, nil, err)
   end
 
   busted.debugInfo = ret.debugInfo

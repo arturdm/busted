@@ -1,14 +1,14 @@
-describe("Config Loader", function()
+describe('Config Loader', function()
   local configLoader = require 'src.modules.configuration_loader'()
   local testConfig, cliArgs
 
   before_each(function()
     testConfig = {
       default = {
-        output = { "utf_terminal" }
+        output = { 'utf_terminal' }
       },
       windows = {
-        output = { "plain_terminal" }
+        output = { 'plain_terminal' }
       }
     }
 

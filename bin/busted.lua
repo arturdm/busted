@@ -96,7 +96,7 @@ end
 
 local loaders = {}
 if #cliArgs.loaders > 0 then
-  string.gsub(cliArgs.loaders, "([^,]+)", function(c) loaders[#loaders+1] = c end)
+  string.gsub(cliArgs.loaders, '([^,]+)', function(c) loaders[#loaders+1] = c end)
 end
 
 -- We report an error if the same tag appears in both `options.tags`

@@ -1,14 +1,14 @@
 -- Runs internally an ev async test and checks the returned statuses.
 
-if not pcall(require, "ev") then
-  describe("Testing ev loop", function()
-    pending("The 'ev' loop was not tested because 'ev' isn't installed")
+if not pcall(require, 'ev') then
+  describe('Testing ev loop', function()
+    pending('The `ev` loop was not tested because `ev` is not installed')
   end)
 else
-  pending("no ev support yet", function()
+  pending('no ev support yet', function()
     -- temporarily adjust path to find the test file in the spec directory
     local old_path = package.path
-    package.path = "./spec/?.lua"
+    package.path = './spec/?.lua'
     local generic_async = require'generic_async_test'
     package.path = old_path
 

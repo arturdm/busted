@@ -20,21 +20,21 @@ return function(options)
 
   local pendingDescription = function(pending)
     local name = pending.name or ''
-    local string = "\n\n" .. ansicolors("%{yellow}" .. s('output.pending')) .. " → " .. 
-      ansicolors("%{cyan}" .. pending.debug.short_src) .. " @ " .. 
-      ansicolors("%{cyan}" .. pending.debug.currentline)  .. 
-      "\n" .. ansicolors("%{bright}" .. name)
+    local string = '\n\n' .. ansicolors('%{yellow}' .. s('output.pending')) .. ' → ' .. 
+      ansicolors('%{cyan}' .. pending.debug.short_src) .. ' @ ' .. 
+      ansicolors('%{cyan}' .. pending.debug.currentline)  .. 
+      '\n' .. ansicolors('%{bright}' .. name)
 
     return string
   end
 
   local failureDescription = function(failure)
     print('hi')
-    local string =  "\n\n" .. ansicolors("%{red}" .. s('output.failure')) .. " → " .. 
-    ansicolors("%{cyan}" .. failure.debug.short_src) .. " @ " .. 
-    ansicolors("%{cyan}" .. failure.debug.currentline) .. 
-    "\n" .. ansicolors("%{bright}" .. failure.name) .. 
-    "\n" .. failure.message
+    local string =  '\n\n' .. ansicolors('%{red}' .. s('output.failure')) .. ' → ' .. 
+    ansicolors('%{cyan}' .. failure.debug.short_src) .. ' @ ' .. 
+    ansicolors('%{cyan}' .. failure.debug.currentline) .. 
+    '\n' .. ansicolors('%{bright}' .. failure.name) .. 
+    '\n' .. failure.message
 
     if options.verbose then
       string = string .. failure.debug.trace

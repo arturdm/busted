@@ -1,6 +1,6 @@
-if not pcall(require, "ev") then
-  describe("Testing ev test order", function()
-    pending("The 'ev' loop test order was not tested because 'ev' isn't installed")
+if not pcall(require, 'ev') then
+  describe('Testing ev test order', function()
+    pending('The `ev` loop test order was not tested because `ev` is not installed')
   end)
 else
 

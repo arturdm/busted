@@ -2,7 +2,7 @@ return function()
   local mediator = require 'mediator'()
 
   local busted = {}
-  busted.version = "2.0-1"
+  busted.version = '2.0-1'
 
   local root = require 'src.context'()
   busted.context = root.ref()
@@ -32,7 +32,7 @@ return function()
   end
 
   function busted.safe(descriptor, run, element, setenv)
-    if setenv and type(run) == "function" then environment.wrap(run) end
+    if setenv and type(run) == 'function' then environment.wrap(run) end
     busted.context.push(element)
     local trace, message
 

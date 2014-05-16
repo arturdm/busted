@@ -1,8 +1,8 @@
 local ret = {}
 
 ret.match = function(busted, filename)
-  local path, name, ext = filename:match("(.-)([^\\/\\\\]-%.?([^%.\\/]*))$")
-  if ext == "lua" then
+  local path, name, ext = filename:match('(.-)([^\\/\\\\]-%.?([^%.\\/]*))$')
+  if ext == 'lua' then
     return true
   end
   return false
@@ -16,12 +16,12 @@ ret.load = function(busted, filename)
     file, err = loadfile(filename)
 
     if not file then
-      busted.publish({ "error", 'file' }, filename, nil, nil, err)
+      busted.publish({ 'error', 'file' }, filename, nil, nil, err)
     end
   end)
 
   if not success then
-    busted.publish({ "error", 'file' }, filename, nil, nil, err)
+    busted.publish({ 'error', 'file' }, filename, nil, nil, err)
   end
 
   busted.getTrace = ret.getTrace
