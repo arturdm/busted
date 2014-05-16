@@ -56,15 +56,15 @@ return function()
         fn = name
         name = nil
       end
-      local debugInfo = busted.getTrace(busted, busted.getFileName(busted.context.get()), 3)
-      busted.publish({'register', descriptor}, name, fn, debugInfo)
+      local trace = busted.getTrace(busted, busted.getFileName(busted.context.get()), 3)
+      busted.publish({'register', descriptor}, name, fn, trace)
     end
     busted.executors[descriptor] = publisher
     environment.set(descriptor, publisher)
 
-    busted.subscribe({'register', descriptor}, function(name, fn, debugInfo)
+    busted.subscribe({'register', descriptor}, function(name, fn, trace)
       local ctx = busted.context.get()
-      local plugin = {descriptor = descriptor, name = name, run = fn, debugInfo = debugInfo}
+      local plugin = {descriptor = descriptor, name = name, run = fn, trace = trace}
       busted.context.attach(plugin)
       if not ctx[descriptor] then
         ctx[descriptor] = {plugin}

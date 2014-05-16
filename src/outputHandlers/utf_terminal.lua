@@ -107,7 +107,7 @@ return function(options)
       pendings = pendings + 1
       io.write(pending_string)
 
-      table.insert(pendingInfos, { name = element.name, debug = element.debugInfo })
+      table.insert(pendingInfos, { name = element.name, debug = element.trace })
     end
   end
 

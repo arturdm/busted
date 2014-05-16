@@ -24,12 +24,12 @@ ret.load = function(busted, filename)
     busted.publish({ "error", 'file' }, filename, nil, nil, err)
   end
 
-  busted.getTrace = ret.debugInfo
+  busted.getTrace = ret.getTrace
 
   return file
 end
 
-ret.debugInfo = function(busted, filename, level)
+ret.getTrace = function(busted, filename, level)
   local info = debug.getinfo(level, 'Sl')
   info.traceback = debug.traceback('', level)
   local index = info.traceback:find('\n%s*%[C]')

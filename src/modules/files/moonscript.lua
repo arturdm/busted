@@ -1,4 +1,6 @@
 local moonscript = require 'moonscript'
+local line_tables = require 'moonscript.line_tables'
+local util = require 'moonscript.util'
 
 local rewrite_linenumber = function(fname, lineno)
   local tbl = line_tables[fname]
