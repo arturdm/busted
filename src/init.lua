@@ -54,6 +54,11 @@ return function(busted)
     busted.publish({'pending'}, pending, busted.context.parent(pending), 'pending', trace)
   end
 
+  local async = function()
+    local parent = busted.context.get()
+    if not parent.env then parent.env = {} end
+    parent.env.done = require 'src.done'.new()
+  end
 
   busted.register('file', file)
 
@@ -62,6 +67,8 @@ return function(busted)
 
   busted.register('it', it)
   busted.register('pending', pending)
+
+  busted.context.get().env.async = async
 
   busted.register('setup')
   busted.register('teardown')

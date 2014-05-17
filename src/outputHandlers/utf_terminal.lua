@@ -29,11 +29,10 @@ return function(options)
   end
 
   local failureDescription = function(failure)
-    print('hi')
     local string =  '\n\n' .. ansicolors('%{red}' .. s('output.failure')) .. ' → ' .. 
     ansicolors('%{cyan}' .. failure.debug.short_src) .. ' @ ' .. 
     ansicolors('%{cyan}' .. failure.debug.currentline) .. 
-    '\n' .. ansicolors('%{bright}' .. failure.name) .. 
+    '\n' .. ansicolors('%{bright}' .. (failure.name or failure.descriptor)) .. 
     '\n' .. failure.message
 
     if options.verbose then
@@ -144,7 +143,7 @@ return function(options)
   end
 
   handler.error = function(element, parent, message, debug)
-    table.insert(failureInfos, { name = element.name, message = message, debug = debug })
+    table.insert(failureInfos, { name = element.name, descriptor = element.descriptor, message = message, debug = debug })
   end
 
   return handler
