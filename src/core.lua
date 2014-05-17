@@ -12,7 +12,7 @@ return function()
   busted.executors = {}
   local executors = {}
 
-  busted.getTrace = function(busted, filename, level) return debug.getinfo(level) end
+  busted.debugInfo = function(busted, filename, level) return debug.getinfo(level) end
 
   function busted.publish(...)
     mediator:publish(...)
@@ -38,7 +38,7 @@ return function()
 
     local ret = {xpcall(run, function(msg)
       message = msg
-      trace = busted.getTrace(busted, busted.getFileName(element), 5)
+      trace = busted.debugInfo(busted, busted.getFileName(element), 5)
     end)}
 
     if message then
@@ -56,7 +56,7 @@ return function()
         fn = name
         name = nil
       end
-      local trace = busted.getTrace(busted, busted.getFileName(busted.context.get()), 3)
+      local trace = busted.debugInfo(busted, busted.getFileName(busted.context.get()), 3)
       busted.publish({'register', descriptor}, name, fn, trace)
     end
     busted.executors[descriptor] = publisher

@@ -2,6 +2,18 @@ local moonscript = require 'moonscript'
 local line_tables = require 'moonscript.line_tables'
 local util = require 'moonscript.util'
 
+local _cache = {}
+
+-- find the line number of `pos` chars into fname
+local lookup_line = function(fname, pos)
+  if not _cache[fname] then
+    local f = io.open(fname)
+    _cache[fname] = f:read("*a")
+    f:close()
+  end
+  return util.pos_to_line(_cache[fname], pos)
+end
+
 local rewrite_linenumber = function(fname, lineno)
   local tbl = line_tables[fname]
   if fname and tbl then

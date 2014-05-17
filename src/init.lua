@@ -50,7 +50,7 @@ return function(busted)
   end
 
   local pending = function(pending)
-    local trace = busted.getTrace(busted, busted.getFileName(pending), 3)
+    local trace = busted.debugInfo(busted, busted.getFileName(pending), 3)
     busted.publish({'pending'}, pending, busted.context.parent(pending), 'pending', trace)
   end
 
